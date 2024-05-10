@@ -28,6 +28,7 @@ export default function Show({ auth, jobOrder, tasks }) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+                    <div>{JSON.stringify(auth.user.ongoing_manhour)}</div>
                     <div>
                         <h1 className="text-5xl font-bold">{jobOrder.name}</h1>
                     </div>
@@ -40,6 +41,25 @@ export default function Show({ auth, jobOrder, tasks }) {
                                         <tr className="group" key={task.id}>
                                             <td className="p-4 w-10 border-t group-first:border-t-0 font-bold">
                                                 {task.name}
+                                            </td>
+                                            <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right">
+                                                {task.manhours_count || ""}
+                                            </td>
+                                            <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right">
+                                                <Link
+                                                    href={route(
+                                                        "manhours.store",
+                                                        task
+                                                    )}
+                                                    method="post"
+                                                    as="button"
+                                                    type="button"
+                                                >
+                                                    {auth.user.ongoing_manhour
+                                                        ?.task_id === task.id
+                                                        ? "End"
+                                                        : "Start"}
+                                                </Link>
                                             </td>
                                         </tr>
                                     );

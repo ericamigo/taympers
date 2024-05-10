@@ -44,6 +44,8 @@ class JobOrdersController extends Controller
         return Inertia::render('JobOrders/Show', [
             'jobOrder' => $jobOrder,
             'tasks' => $jobOrder->tasks()
+                ->with('manhours')
+                ->withCount('manhours')
                 ->latest()
                 ->get(),
         ]);
