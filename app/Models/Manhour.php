@@ -13,5 +13,6 @@ class Manhour extends Model
         'starts_at',
         'ends_at',
         'task_id',
+        'user_id',
     ];
 }
