@@ -15,6 +15,16 @@ class JobOrdersController extends Controller
     {
         return Inertia::render('JobOrders/Index', [
             'jobOrders' => JobOrder::query()
+                ->with([
+                    'manhours' => function ($query) {
+                        $query
+                            ->with('task')
+                            ->selectRaw("
+                                tasks.job_order_id, TIME_FORMAT(SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(ends_at, starts_at)))), '%H:%i') AS total_duration
+                            ")
+                            ->groupBy('job_order_id');
+                    }
+                ])
                 ->latest()
                 ->get(),
         ]);

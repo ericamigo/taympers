@@ -181,6 +181,28 @@ export default function Authenticated({ user, header, children }) {
             )}
 
             <main>{children}</main>
+
+            {user.ongoing_manhour && (
+                <div className="fixed bottom-4 md:bottom-6 right-4 md:right-6 ring-4 ring-rose-500/20 hover:ring-rose-500/40 duration-150 rounded-lg py-2 px-4 bg-white flex gap-3 z-[9999] select-none">
+                    <div className="font-bold max-w-44 truncate">
+                        {user.ongoing_manhour.task.name}
+                    </div>
+                    <div>
+                        <Link
+                            href={route(
+                                "manhours.store",
+                                user.ongoing_manhour.task
+                            )}
+                            method="post"
+                            as="button"
+                            type="button"
+                            className="text-rose-500"
+                        >
+                            <i className="bi bi-stop-circle animate-pulse"></i>
+                        </Link>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

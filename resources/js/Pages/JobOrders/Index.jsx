@@ -43,6 +43,12 @@ export default function Index({ auth, jobOrders }) {
                                                     {jobOrder.name}
                                                 </Link>
                                             </td>
+                                            <td className="p-4 border-t group-first:border-t-0 text-right whitespace-nowrap font-mono font-bold">
+                                                {
+                                                    jobOrder.manhours[0]
+                                                        ?.total_duration
+                                                }
+                                            </td>
                                         </tr>
                                     );
                                 })}

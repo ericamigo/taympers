@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Manhour extends Model
 {
@@ -15,4 +16,12 @@ class Manhour extends Model
         'task_id',
         'user_id',
     ];
+
+    /**
+     * Relationship Methods
+     */
+    public function task(): BelongsTo
+    {
+        return $this->belongsTo(Task::class);
+    }
 }

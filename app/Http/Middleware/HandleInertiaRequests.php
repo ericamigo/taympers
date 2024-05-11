@@ -21,7 +21,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user()
                     ?->load([
-                        'ongoingManhour'
+                        'ongoingManhour.task'
                     ]),
             ],
         ];

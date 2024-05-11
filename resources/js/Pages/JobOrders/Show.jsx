@@ -1,5 +1,5 @@
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import TasksCreate from "@/Pages/Tasks/Create";
 
 export default function Show({ auth, jobOrder, tasks }) {
@@ -44,11 +44,21 @@ export default function Show({ auth, jobOrder, tasks }) {
                                             <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right">
                                                 {task.manhours_count || ""}
                                             </td>
-                                            <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right">
-                                                {
-                                                    task.manhours[0]
-                                                        ?.total_duration
-                                                }
+                                            <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right font-mono">
+                                                <div
+                                                    className={
+                                                        auth.user
+                                                            .ongoing_manhour
+                                                            ?.task_id ===
+                                                            task.id &&
+                                                        "animate-pulse text-indigo-500"
+                                                    }
+                                                >
+                                                    {
+                                                        task.manhours[0]
+                                                            ?.total_duration
+                                                    }
+                                                </div>
                                             </td>
                                             <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right">
                                                 <Link
