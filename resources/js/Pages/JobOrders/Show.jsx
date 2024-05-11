@@ -28,7 +28,6 @@ export default function Show({ auth, jobOrder, tasks }) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                    <div>{JSON.stringify(auth.user.ongoing_manhour)}</div>
                     <div>
                         <h1 className="text-5xl font-bold">{jobOrder.name}</h1>
                     </div>
@@ -44,6 +43,12 @@ export default function Show({ auth, jobOrder, tasks }) {
                                             </td>
                                             <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right">
                                                 {task.manhours_count || ""}
+                                            </td>
+                                            <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right">
+                                                {
+                                                    task.manhours[0]
+                                                        ?.total_duration
+                                                }
                                             </td>
                                             <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right">
                                                 <Link
@@ -64,6 +69,13 @@ export default function Show({ auth, jobOrder, tasks }) {
                                         </tr>
                                     );
                                 })}
+                                {tasks.length === 0 && (
+                                    <tr className="group">
+                                        <td className="p-4 w-10 border-t group-first:border-t-0 text-center">
+                                            No tasks found
+                                        </td>
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                     </div>

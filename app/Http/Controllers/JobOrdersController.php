@@ -28,7 +28,7 @@ class JobOrdersController extends Controller
     public function store(Request $request): RedirectResponse
     {
         try {
-            JobOrder::create($request->only(
+            $jobOrder = JobOrder::create($request->only(
                 'name',
             ));
         } catch (\Throwable $th) {
@@ -36,7 +36,7 @@ class JobOrdersController extends Controller
                 ->withError($th->getMessage());
         }
 
-        return Redirect::route('job-orders.index');
+        return Redirect::route('job-orders.show', $jobOrder);
     }
 
     public function show(JobOrder $jobOrder): Response
@@ -44,7 +44,15 @@ class JobOrdersController extends Controller
         return Inertia::render('JobOrders/Show', [
             'jobOrder' => $jobOrder,
             'tasks' => $jobOrder->tasks()
-                ->with('manhours')
+                ->with([
+                    'manhours' => function ($query) {
+                        $query
+                            ->selectRaw("
+                                task_id, SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(ends_at, starts_at)))) AS total_duration
+                            ")
+                            ->groupBy('task_id');
+                    }
+                ])
                 ->withCount('manhours')
                 ->latest()
                 ->get(),

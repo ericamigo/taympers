@@ -21,7 +21,6 @@ export default function Create({ jobOrder }) {
     return (
         <form onSubmit={submit}>
             <div className="space-y-1">
-                <InputLabel htmlFor="name" value="Task Name" />
                 <div className="flex gap-2">
                     <div className="grow">
                         <TextInput
@@ -32,6 +31,7 @@ export default function Create({ jobOrder }) {
                             required
                             isFocused
                             autoComplete="name"
+                            placeholder="Task name"
                         />
                         <InputError className="mt-2" message={errors.name} />
                     </div>

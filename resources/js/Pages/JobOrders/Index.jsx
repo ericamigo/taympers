@@ -46,6 +46,13 @@ export default function Index({ auth, jobOrders }) {
                                         </tr>
                                     );
                                 })}
+                                {jobOrders.length === 0 && (
+                                    <tr className="group">
+                                        <td className="p-4 w-10 border-t group-first:border-t-0 text-center">
+                                            No job orders found
+                                        </td>
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                     </div>
