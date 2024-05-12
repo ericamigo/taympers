@@ -2,6 +2,22 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 
 export default function Index({ auth, jobOrders }) {
+    const calcTotalDuration = (manhours) => {
+        return manhours
+            .map((manhour) => manhour.duration)
+            .reduce((a, c) => a + c, 0);
+    };
+
+    const secondsToHHMM = (seconds) => {
+        var hours = Math.floor(seconds / 3600);
+        var minutes = Math.floor((seconds % 3600) / 60);
+
+        var hoursString = hours < 10 ? "0" + hours : hours;
+        var minutesString = minutes < 10 ? "0" + minutes : minutes;
+
+        return hoursString + ":" + minutesString;
+    };
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -44,10 +60,11 @@ export default function Index({ auth, jobOrders }) {
                                                 </Link>
                                             </td>
                                             <td className="p-4 border-t group-first:border-t-0 text-right whitespace-nowrap font-mono font-bold">
-                                                {
-                                                    jobOrder.manhours[0]
-                                                        ?.total_duration
-                                                }
+                                                {secondsToHHMM(
+                                                    calcTotalDuration(
+                                                        jobOrder.manhours
+                                                    )
+                                                )}
                                             </td>
                                         </tr>
                                     );

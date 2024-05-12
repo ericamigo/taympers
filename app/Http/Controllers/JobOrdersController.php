@@ -16,7 +16,11 @@ class JobOrdersController extends Controller
         return Inertia::render('JobOrders/Index', [
             'jobOrders' => JobOrder::query()
                 ->with([
-                    'manhours',
+                    'manhours' => function ($query) {
+                        $query->selectRaw("
+                            *, ends_at - starts_at as duration
+                        ");
+                    },
                 ])
                 ->latest()
                 ->get(),
