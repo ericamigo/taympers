@@ -15,6 +15,22 @@ export default function Show({ auth, jobOrder, tasks }) {
         });
     };
 
+    const calcTotalDuration = (manhours) => {
+        return manhours
+            .map((manhour) => manhour.duration)
+            .reduce((a, c) => a + c, 0);
+    };
+
+    const secondsToHHMM = (seconds) => {
+        var hours = Math.floor(seconds / 3600);
+        var minutes = Math.floor((seconds % 3600) / 60);
+
+        var hoursString = hours < 10 ? "0" + hours : hours;
+        var minutesString = minutes < 10 ? "0" + minutes : minutes;
+
+        return hoursString + ":" + minutesString;
+    };
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -44,7 +60,13 @@ export default function Show({ auth, jobOrder, tasks }) {
                                             <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right">
                                                 {task.manhours_count || ""}
                                             </td>
-                                            <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right font-mono"></td>
+                                            <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right font-mono">
+                                                {secondsToHHMM(
+                                                    calcTotalDuration(
+                                                        task.manhours
+                                                    )
+                                                )}
+                                            </td>
                                             <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right">
                                                 <Link
                                                     href={route(

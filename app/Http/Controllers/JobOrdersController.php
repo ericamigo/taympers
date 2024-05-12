@@ -49,12 +49,10 @@ class JobOrdersController extends Controller
             'tasks' => $jobOrder->tasks()
                 ->with([
                     'manhours' => function ($query) {
-                        $query
-                            ->selectRaw("
-                                task_id, TIME_FORMAT(SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(ends_at, starts_at)))), '%H:%i') AS total_duration
-                            ")
-                            ->groupBy('task_id');
-                    }
+                        $query->selectRaw("
+                            *, ends_at - starts_at as duration
+                        ");
+                    },
                 ])
                 ->withCount('manhours')
                 ->latest()
