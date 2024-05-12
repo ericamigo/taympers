@@ -45,16 +45,13 @@ export default function Index({ auth, jobOrders }) {
                                 {jobOrders.map((jobOrder) => {
                                     return (
                                         <tr className="group" key={jobOrder.id}>
-                                            <td className="p-4 w-10 border-t group-first:border-t-0">
-                                                {jobOrder.id}
-                                            </td>
                                             <td className="p-4 border-t group-first:border-t-0">
                                                 <Link
                                                     href={route(
                                                         "job-orders.show",
                                                         jobOrder
                                                     )}
-                                                    className="font-bold"
+                                                    className="hover:text-indigo-500 duration-150 font-bold"
                                                 >
                                                     {jobOrder.name}
                                                 </Link>
