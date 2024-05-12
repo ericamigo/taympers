@@ -50,7 +50,7 @@ export default function Authenticated({ user, header, children }) {
                                         <span className="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                                                className="inline-flex items-center px-3 py-2 border border-transparent leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
                                                 {user.name}
 
@@ -151,7 +151,7 @@ export default function Authenticated({ user, header, children }) {
                             <div className="font-medium text-base text-gray-800">
                                 {user.name}
                             </div>
-                            <div className="font-medium text-sm text-gray-500">
+                            <div className="font-medium text-gray-500">
                                 {user.email}
                             </div>
                         </div>
@@ -183,7 +183,7 @@ export default function Authenticated({ user, header, children }) {
             <main>{children}</main>
 
             {user.ongoing_manhour && (
-                <div className="fixed bottom-4 md:bottom-6 right-4 md:right-6 ring-4 ring-rose-500/20 hover:ring-rose-500/40 duration-150 rounded-lg py-2 px-4 bg-white flex gap-3 z-[9999] select-none">
+                <div className="fixed bottom-4 md:bottom-6 right-4 md:right-6 ring-4 ring-indigo-500/20 hover:ring-indigo-500/40 duration-150 rounded-lg py-2 px-4 bg-white flex gap-3 z-[9999] select-none">
                     <div className="font-bold max-w-44 truncate">
                         {user.ongoing_manhour.task.name}
                     </div>
@@ -196,9 +196,9 @@ export default function Authenticated({ user, header, children }) {
                             method="post"
                             as="button"
                             type="button"
-                            className="text-rose-500"
+                            className="text-indigo-500"
                         >
-                            <i className="bi bi-stop-circle animate-pulse"></i>
+                            <i className="bi bi-stop-circle"></i>
                         </Link>
                     </div>
                 </div>
