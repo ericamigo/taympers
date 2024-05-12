@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TasksController;
 use App\Http\Controllers\JobOrdersController;
 use App\Http\Controllers\ManhoursController;
+use App\Http\Controllers\TasksController;
+use Illuminate\Support\Facades\Route;
 
 Route::prefix('/job-orders')->name('job-orders.')->group(function () {
     Route::get('/', [JobOrdersController::class, 'index'])->name('index');

@@ -55,7 +55,7 @@ export default function Index({ auth, jobOrders }) {
                                                 <Link
                                                     href={route(
                                                         "job-orders.show",
-                                                        jobOrder
+                                                        jobOrder,
                                                     )}
                                                     className="hover:text-indigo-500 duration-150 font-bold"
                                                 >
@@ -65,8 +65,8 @@ export default function Index({ auth, jobOrders }) {
                                             <td className="p-4 border-t group-first:border-t-0 text-right whitespace-nowrap font-mono font-bold">
                                                 {secondsToHHMM(
                                                     calcTotalDuration(
-                                                        jobOrder.manhours
-                                                    )
+                                                        jobOrder.manhours,
+                                                    ),
                                                 )}
                                             </td>
                                         </tr>

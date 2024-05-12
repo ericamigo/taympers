@@ -9,7 +9,7 @@ class HandleInertiaRequests extends Middleware
 {
     protected $rootView = 'app';
 
-    public function version(Request $request): string|null
+    public function version(Request $request): ?string
     {
         return parent::version($request);
     }
@@ -21,7 +21,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user()
                     ?->load([
-                        'ongoingManhour.task'
+                        'ongoingManhour.task',
                     ]),
             ],
         ];

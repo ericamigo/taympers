@@ -73,15 +73,15 @@ export default function Show({ auth, jobOrder, tasks }) {
                                             <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right font-mono">
                                                 {secondsToHHMM(
                                                     calcTotalDuration(
-                                                        task.manhours
-                                                    )
+                                                        task.manhours,
+                                                    ),
                                                 )}
                                             </td>
                                             <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right">
                                                 <Link
                                                     href={route(
                                                         "manhours.store",
-                                                        task
+                                                        task,
                                                     )}
                                                     method="post"
                                                     as="button"

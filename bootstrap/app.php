@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Support\Facades\Route;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -12,7 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
         then: function () {
             Route::middleware(['web', 'auth'])
-                ->group(__DIR__ . '/../routes/app.php');
+                ->group(__DIR__.'/../routes/app.php');
         }
     )
     ->withMiddleware(function (Middleware $middleware) {

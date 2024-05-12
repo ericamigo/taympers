@@ -19,9 +19,9 @@ class TasksController extends Controller
                 ->with([
                     'jobOrder',
                     'manhours' => function ($query) {
-                        $query->selectRaw("
+                        $query->selectRaw('
                             *, ends_at - starts_at as duration
-                        ");
+                        ');
                     },
                 ])
                 ->latest()
