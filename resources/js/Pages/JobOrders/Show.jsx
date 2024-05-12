@@ -35,9 +35,11 @@ export default function Show({ auth, jobOrder, tasks }) {
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Job Order
-                </h2>
+                <div className="flex gap-2">
+                    <Link href={route("job-orders.index")}>Job Orders</Link>
+                    <div>/</div>
+                    <div>{jobOrder.name}</div>
+                </div>
             }
         >
             <Head title="Job Order" />

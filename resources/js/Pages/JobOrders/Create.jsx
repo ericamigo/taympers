@@ -22,9 +22,11 @@ export default function Create({ auth }) {
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Create Job Order
-                </h2>
+                <div className="flex gap-2">
+                    <Link href={route("job-orders.index")}>Job Orders</Link>
+                    <div>/</div>
+                    <div>Create</div>
+                </div>
             }
         >
             <Head title="Create Job Order" />
