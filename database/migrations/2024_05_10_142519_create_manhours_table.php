@@ -10,8 +10,8 @@ return new class extends Migration
     {
         Schema::create('manhours', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('starts_at');
-            $table->dateTime('ends_at')->nullable();
+            $table->timestamp('starts_at');
+            $table->timestamp('ends_at')->nullable();
             $table->foreignId('task_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();

@@ -17,20 +17,20 @@ class ManhoursController extends Controller
 
         if ($ongoingManhour) {
             $ongoingManhour->update([
-                'ends_at' => Carbon::now(),
+                'ends_at' => Carbon::now()->timestamp,
             ]);
 
             if ($task->id != $ongoingManhour->task_id) {
                 Auth::user()->manhours()
                     ->create([
-                        'starts_at' => Carbon::now(),
+                        'starts_at' => Carbon::now()->timestamp,
                         'task_id' => $task->id,
                     ]);
             }
         } else {
             Auth::user()->manhours()
                 ->create([
-                    'starts_at' => Carbon::now(),
+                    'starts_at' => Carbon::now()->timestamp,
                     'task_id' => $task->id,
                 ]);
         }
