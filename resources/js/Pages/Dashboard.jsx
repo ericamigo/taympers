@@ -1,9 +1,18 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 
 export default function Dashboard({ auth }) {
     return (
-        <AuthenticatedLayout user={auth.user}>
+        <AuthenticatedLayout
+            user={auth.user}
+            header={
+                <div className="flex gap-2">
+                    <Link href={route("dashboard")}>
+                        <i className="bi bi-grid"></i>
+                    </Link>
+                </div>
+            }
+        >
             <Head title="Dashboard" />
 
             <div className="py-12">

@@ -23,6 +23,12 @@ export default function Index({ auth, jobOrders }) {
             user={auth.user}
             header={
                 <div className="flex gap-2">
+                    <Link href={route("dashboard")}>
+                        <i className="bi bi-grid"></i>
+                    </Link>
+                    <div>
+                        <i className="bi bi-chevron-compact-right"></i>
+                    </div>
                     <Link href={route("job-orders.index")}>Job Orders</Link>
                 </div>
             }

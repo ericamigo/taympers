@@ -21,9 +21,15 @@ export default function Index({ auth, tasks }) {
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Tasks
-                </h2>
+                <div className="flex gap-2">
+                    <Link href={route("dashboard")}>
+                        <i className="bi bi-grid"></i>
+                    </Link>
+                    <div>
+                        <i className="bi bi-chevron-compact-right"></i>
+                    </div>
+                    <Link href={route("tasks.index")}>Tasks</Link>
+                </div>
             }
         >
             <Head title="Profile" />
