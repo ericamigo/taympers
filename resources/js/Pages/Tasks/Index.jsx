@@ -34,7 +34,7 @@ export default function Index({ auth, tasks }) {
         >
             <Head title="Profile" />
 
-            <div className="py-12">
+            <div className="py-12 px-4 md:px-6">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                     <div className="rounded-lg bg-white border border-gray-300 shadow-sm">
                         <table className="w-full">
@@ -49,7 +49,7 @@ export default function Index({ auth, tasks }) {
                                                 <Link
                                                     href={route(
                                                         "job-orders.show",
-                                                        task.job_order,
+                                                        task.job_order
                                                     )}
                                                     className="hover:text-indigo-500 duration-150"
                                                 >
@@ -62,15 +62,15 @@ export default function Index({ auth, tasks }) {
                                             <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right font-mono">
                                                 {secondsToHHMM(
                                                     calcTotalDuration(
-                                                        task.manhours,
-                                                    ),
+                                                        task.manhours
+                                                    )
                                                 )}
                                             </td>
                                             <td className="p-4 w-10 border-t group-first:border-t-0 font-bold text-right">
                                                 <Link
                                                     href={route(
                                                         "manhours.store",
-                                                        task,
+                                                        task
                                                     )}
                                                     method="post"
                                                     as="button"
