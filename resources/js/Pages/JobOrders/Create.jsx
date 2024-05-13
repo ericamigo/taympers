@@ -40,7 +40,7 @@ export default function Create({ auth }) {
             <Head title="Create Job Order" />
 
             <form onSubmit={submit}>
-                <div className="py-12">
+                <div className="py-12 px-4 md:px-6">
                     <div className="max-w-screen-sm mx-auto sm:px-6 lg:px-8 space-y-6">
                         <div>
                             <div className="space-y-4">
